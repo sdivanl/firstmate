@@ -1,0 +1,8 @@
+## lab session: fm-lab-deliberate-stop-1374406-14748
+OK - isolated Herdr lab session fm-lab-deliberate-stop-1374406-14748 provisioned
+OK - real Herdr task pane created: fm-lab-deliberate-stop-1374406-14748:w1:p2
+## SCENARIO: the real away-mode daemon parks a deliberately stopped task and re-surfaces it on the pause cadence
+--- daemon escalation buffer ---
+deliberately stopped 505s (parked task, recheck whether to relaunch the worker or clean up the finished task): fm-lab-deliberate-stop-1374406-14748:w1:p2
+OK - real away-mode daemon parked the deliberately stopped task and re-surfaced it on the pause cadence, never a wedge
+## ALL LIVE DAEMON SCENARIOS PASSED

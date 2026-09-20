@@ -1,0 +1,18 @@
+## lab session: fm-lab-deliberate-stop-1107510-25188
+OK - isolated Herdr lab session fm-lab-deliberate-stop-1107510-25188 provisioned
+OK - real Herdr task pane created: fm-lab-deliberate-stop-1107510-25188:w1:p2
+## SCENARIO 1: a real 'fm-control exit' on the parked task writes the durable marker
+already-stopped ds1 harness=claude backend=herdr endpoint=fm-lab-deliberate-stop-1107510-25188:w1:p2 worktree=/tmp/fm-deliberate-stop.YX7XPH/wt
+OK - real fm-control exit recorded /tmp/fm-deliberate-stop.YX7XPH/home/state/ds1.deliberate-stop = 1789934998
+## SCENARIO 2+3: the real watcher parks the deliberately stopped task, then re-surfaces a bounded recheck past the cadence
+OK - real watcher absorbed the deliberately parked task with no wake and no wedge timer
+stale: fm-lab-deliberate-stop-1107510-25188:w1:p2 (deliberately stopped 500s ago, rechecked on a long cadence not a wedge; relaunch the worker or clean up the finished task)
+OK - real watcher re-surfaced the parked task on the bounded cadence and never wedge-escalated
+## SCENARIO 4 (adversarial): the same idle pane with NO deliberate-stop marker still surfaces as terminal stale
+stale: fm-lab-deliberate-stop-1107510-25188:w1:p2
+OK - a never-stopped idle task kept its ordinary terminal-stale escalation behavior
+## SCENARIO 5: a real 'fm-spawn --relaunch' clears the durable marker
+warning: /tmp/fm-deliberate-stop.YX7XPH/home/data/ds1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+spawned ds1 harness=codex kind=ship mode=no-mistakes yolo=off window=fm-lab-deliberate-stop-1107510-25188:w1:p2 worktree=/tmp/fm-deliberate-stop.YX7XPH/wt
+OK - real relaunch cleared the deliberate-stop marker
+## ALL LIVE SCENARIOS PASSED
