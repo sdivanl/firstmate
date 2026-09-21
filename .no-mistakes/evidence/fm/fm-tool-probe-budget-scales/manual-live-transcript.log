@@ -1,0 +1,47 @@
+############ SCENARIO A: loaded host, 4 slow + 1 loaded tail tool ############
+--- base (43bf6d3d9e5384cc02557929be220e03477d3068) ---
+  [base-a] exit=0
+  [out] tool updates: t1 update available: available: true; t2 update available: available: true; t3 update available: available: true; t4 update available: available: true; t5 check failed: /tmp/fm-manual.aoSjUZ/a/bin/tool5 did not answer when asked for its update announcement
+--- target (b19fbd9) ---
+  [target-a] exit=0
+  [out] tool updates: t1 update available: available: true; t2 update available: available: true; t3 update available: available: true; t4 update available: available: true; t5 update available: available: true
+
+############ SCENARIO B: one transiently slow PATH announcement is retried ############
+--- base ---
+  [base-b] exit=0
+  [out] tool updates: no-mistakes check failed: /tmp/fm-manual.aoSjUZ/b/bin/no-mistakes-fixture did not answer when asked for its update announcement
+--- target ---
+  [target-b] exit=0
+  [out] (silent)
+
+############ SCENARIO C: one transiently slow git probe is retried (review fix) ############
+--- intermediate 9c59074 (no git retry) ---
+  [interm-c] exit=0
+  [out] tool updates: firstmate check failed: /tmp/fm-manual.aoSjUZ/c/repo did not answer whether it already has a5ed50692d12
+--- target (slow-once cat-file) ---
+  [target-c] exit=0
+  [out] (silent)
+
+############ SCENARIO D: derived default budget clamped silently on a current home ############
+--- base (non-derived budget, silent because 20 <= 27) ---
+  [base-d] exit=0
+  [out] (silent)
+--- intermediate 9c59074 (derived clamp reported as a finding) ---
+  [interm-d] exit=0
+  [out] tool updates: sweep budget 30s cut to 27s to stay inside the watcher check timeout of 30s
+--- target ---
+  [target-d] exit=0
+  [out] (silent)
+
+############ SCENARIO E: explicit oversized budget is still reported ############
+--- target, FM_TOOL_UPDATE_BUDGET_SECS=120 ---
+  [target-e] exit=0
+  [out] tool updates: sweep budget 120s cut to 27s to stay inside the watcher check timeout of 30s
+
+############ SCENARIO F: a genuinely unresponsive probe is still reported ############
+--- base ---
+  [base-f] exit=0
+  [out] tool updates: herdr check failed: /tmp/fm-manual.aoSjUZ/f/bin/herdr-fixture did not answer when asked for its update announcement
+--- target ---
+  [target-f] exit=0
+  [out] tool updates: herdr check failed: /tmp/fm-manual.aoSjUZ/f/bin/herdr-fixture did not answer when asked for its update announcement
