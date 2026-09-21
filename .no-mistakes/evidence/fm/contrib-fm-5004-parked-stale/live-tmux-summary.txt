@@ -1,0 +1,7 @@
+REAL tmux server on private socket; real bin/fm-watch.sh; pane idle after a finished status line.
+Phase A (fresh deliberate stop, 6 polls): watcher alive=1; stdout bytes=0; wedge timer=no
+Phase B (marker aged 500s, PAUSE_RESURFACE_SECS=240): exited=1; stdout:
+stale: live:fm-parked (deliberately stopped 501s ago, rechecked on a long cadence not a wedge; relaunch the worker or clean up the finished task)
+Phase C (marker removed, adversarial, PAUSE_RESURFACE_SECS=240): exited=1; stdout:
+stale: live:fm-parked
+Phase D (re-stop with old throttle, first-sight absorb): watcher alive=1; stdout bytes=0

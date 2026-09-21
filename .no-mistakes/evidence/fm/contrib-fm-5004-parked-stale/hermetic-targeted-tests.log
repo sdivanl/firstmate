@@ -1,0 +1,33 @@
+### tests/.tmp-control-targeted.test.sh
+ok - fm-control exit: an already-stopped agent is idempotent success with no bytes sent
+ok - fm-control exit: a verified stop records the deliberate-stop marker; a refused stop does not
+ok - fm-control exit: an unprovable tmux endpoint refuses instead of claiming the agent stopped
+exit=0
+
+### tests/.tmp-relaunch-targeted.test.sh
+ok - fm-control relaunch: clears the durable deliberate-stop marker left by a prior stop
+ok - fm-control relaunch: a failed post-launch backlog commit still clears the deliberate-stop marker
+ok - fm-control relaunch: wiring cleanup failure refuses replacement arming and retains the parked stop
+exit=0
+
+### tests/.tmp-teardown-targeted.test.sh
+ok - teardown retires the deliberate-stop marker when an exact busy-state sidecar is already absent
+exit=0
+
+### tests/.tmp-daemon-targeted.test.sh
+ok - the away-mode daemon parks a deliberately stopped task instead of wedge-escalating it
+ok - the away-mode daemon re-surfaces a deliberately stopped task on the bounded pause cadence
+ok - the away-mode daemon anchors a deliberate stop's first recheck on the stop itself
+exit=0
+
+### tests/.tmp-watch-targeted.test.sh
+ok - a stale pane sitting on a terminal status is surfaced (queue + exit)
+ok - a live wedged agent, an unattributable one, and an unreadable endpoint escalate unchanged
+ok - consecutive wedge escalations on the same pane accumulate and demand deep inspection at the threshold
+ok - a deliberately stopped finished task is parked on the bounded recheck cadence, never wedge-escalated
+ok - a re-stopped deliberate task absorbs on first sight, then still re-surfaces on the bounded cadence
+ok - clearing the deliberate-stop marker returns the finished task to ordinary terminal-stale supervision
+ok - a deliberately stopped busy pane is parked on the bounded recheck cadence, never wedge-escalated
+ok - a churning deliberately parked task still gets the bounded recheck, never a wedge
+exit=0
+

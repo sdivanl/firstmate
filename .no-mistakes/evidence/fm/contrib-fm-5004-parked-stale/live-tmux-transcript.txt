@@ -1,0 +1,31 @@
+=== Real tmux session ===
+1: fm-parked* (1 panes) [80x24] [layout b25d,80x24,0,0,0] @0 (active)
+
+=== Phase A: fresh deliberate stop must be absorbed, never wedge-escalated ===
+watcher alive after ~6 poll cycles: 1
+phase A stdout bytes: 0
+phase A stdout:
+phase A stderr:
+wedge timer present: no
+wedge escalation counter present: no
+stale suppressor advanced: yes
+
+=== Phase B: past the cadence it re-surfaces as a bounded recheck, never a wedge ===
+watcher exited on the recheck: 1
+phase B stdout:
+stale: live:fm-parked (deliberately stopped 501s ago, rechecked on a long cadence not a wedge; relaunch the worker or clean up the finished task)
+phase B stderr:
+deliberate-stop re-surface throttle present: yes
+wedge timer present after recheck: no
+
+=== Phase C (adversarial): same finished idle task with NO marker still wedge-escalates ===
+watcher exited on the marker-less finished task: 1
+phase C stdout:
+stale: live:fm-parked
+phase C stderr:
+
+=== Phase D: a re-stop after relaunch absorbs on first sight despite the old throttle ===
+watcher alive after re-stop (first-sight absorb expected): 1
+phase D stdout bytes: 0
+phase D stdout:
+phase D stderr:

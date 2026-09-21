@@ -1,0 +1,7 @@
+ok - live: a verified tmux stop records the deliberate-stop marker; an unprovable endpoint records none
+ok - live: the watcher absorbs a fresh deliberate stop and re-surfaces it on the bounded cadence
+ok - live: the watcher parks a deliberately stopped busy pane on the bounded recheck cadence
+ok - live: a churning deliberately parked pane still gets the bounded deliberate-stop recheck
+ok - live: removing the marker returns the finished task to ordinary terminal-stale supervision
+ok - live: teardown retires the deliberate-stop marker for a real task
+ok - live: a real relaunch clears the marker and an aborted relaunch retains the parked stop
