@@ -1,0 +1,9 @@
+== setting up isolated lab /home/ivanl/.no-mistakes/worktrees/bfc710bdae80/01M32J37994HCXQ8EAXFWKD1WC/.pi-new-live.4665 ==
+startup: watcher=4780 arm=4742 owner='generation=1 phase=active'
+== sending /new ==
+after /new: owner='generation=2 phase=active' saw_handoff=1 pred_alive_during=1 samples=11
+successor: watcher=6206 arm=6184
+guard output after /new:
+
+== sending /quit ==
+ok - real Pi 0.86.1 live /new replacement retained the predecessor under a handoff generation, committed a distinct active successor with a live watcher, and raised no supervision-dropout alarm
