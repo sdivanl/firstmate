@@ -1,0 +1,39 @@
+herdr herdr 0.9.1  pi 0.86.1  HEAD 8263e46c256d3a0036d4fe6f4d383b587cb297a7
+
+=== pi relaunch onto a pane whose own Herdr record names a pi session ===
+pane w2:p1 herdr agent_session read: [pi	/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T15-56-17-548Z_01a0c4ae-af0c-76f5-9b64-209ccfee3d9b.jsonl]
+fm-spawn rc=0 : spawned nmtest harness=pi kind=ship mode=no-mistakes yolo=off window=fm-lab-nm1:w2:p1 worktree=/tmp/nm-herdr-scratch/wt
+replacement argv:
+    --tui-mode
+    regular
+    --session
+    /home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T15-56-17-548Z_01a0c4ae-af0c-76f5-9b64-209ccfee3d9b.jsonl
+    -e
+    /tmp/nm-herdr-scratch/home/state/nmtest.pi-ext.ts
+  --session count: 1
+
+=== pi relaunch onto a pane with no agent registration at all ===
+pane w3:p1 herdr agent_session read: []
+fm-spawn rc=0 : spawned nmnoauth harness=pi kind=ship mode=no-mistakes yolo=off window=fm-lab-nm1:w3:p1 worktree=/tmp/nm-herdr-scratch/wt
+replacement argv:
+    --tui-mode
+    regular
+    -e
+    /tmp/nm-herdr-scratch/home/state/nmnoauth.pi-ext.ts
+    ⁣FIRSTMATE_OP: v1 launch-brief: # Current worker role contract
+    You are a crewmate: an autonomous worker agent managed by firstmate.
+  --session count: 0
+
+=== done ===
+=== pi relaunch onto a pane whose Herdr record names a DIFFERENT harness (claude) ===
+pane w3:p1 herdr record: {"agent":"claude","agent_status":"blocked","session":"84f6c9ca-8774-4529-908a-abc86e2c76d2"}  foreground=bash
+fm_backend_herdr_pane_agent_session_ref -> [claude	84f6c9ca-8774-4529-908a-abc86e2c76d2]
+fm-spawn rc=0 : spawned nmnoauth harness=pi kind=ship mode=no-mistakes yolo=off window=fm-lab-nm1:w3:p1 worktree=/tmp/nm-herdr-scratch/wt
+replacement argv:
+    --tui-mode
+    regular
+    -e
+    /tmp/nm-herdr-scratch/home/state/nmnoauth.pi-ext.ts
+    ⁣FIRSTMATE_OP: v1 launch-brief: # Current worker role contract
+  --session count: 0
+

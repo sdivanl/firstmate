@@ -1,0 +1,82 @@
+=== environment ===
+herdr 0.9.1
+0.86.1
+worktree HEAD: 8263e46c256d3a0036d4fe6f4d383b587cb297a7
+
+=== setup: a fresh Herdr pane with a real Pi bound to a new idle session ===
+pane=w6:p1 workspace=w6 tab=w6:t1
+bound fresh session: {"agent":"pi","agent_status":"idle","session":"/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl"}
+after /quit (registration persists over the nested shell): {"agent":"pi","agent_status":"idle","session":"/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl"}
+foreground: bash   BOUND_REF=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+
+=== step 1: reproduce the freeze with a FRESH (non-resumed) Pi session ===
+starting a fresh pi (no --session) with a 45s tool turn
+polling while the fresh pi works:
+  t=02s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=04s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=06s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=08s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=10s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=12s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=14s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=16s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=18s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=20s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=22s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=24s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=26s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=28s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=30s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=32s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=34s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=36s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=38s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=40s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=42s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=44s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=46s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=48s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=50s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=52s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=54s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=56s herdr_status=idle     herdr_session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+--- pane output proving the fresh turn ran ---
+RESULT: herdr kept 'idle' for the fresh session's whole working turn (frozen at the pre-relaunch value)
+after /quit: {"agent":"pi","agent_status":"idle","session":"/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl"} foreground=bash
+
+=== step 2: relaunch through the real launch owner; the resumed authority comes alive ===
+fm-spawn rc=0 output tail: spawned nmtest harness=pi kind=ship mode=no-mistakes yolo=off window=fm-lab-nm1:w6:p1 worktree=/tmp/nm-herdr-scratch/wt
+relaunch status transitions:
+  t=01s herdr_status=idle session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+  t=04s herdr_status=working session=/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl
+replacement process: /home/ivanl/.local/share/mise/installs/pi/latest/pi/pi --tui-mode regular --session /home/ivanl/.pi/agent/sessions/--t
+You are a crewmate: an autonomous worker agent managed by firstmate.
+This section establishes your current identity before every project or task instruction below and supersedes any confl
+Do the assigned work yourself and report only to firstmate; do not adopt a firstmate or secondmate supervisor identity
+Your steering inbox is `/tmp/nm-herdr-scratch/home/state/nmtest.inbox`; this exact path belongs to your current task e
+Never inspect or change any other home's endpoint namespace; this authorization is limited to the exact task paths nam
+When this task works on Firstmate itself, the repository root `AGENTS.md` (also imported by `CLAUDE.md`) is project co
+Project instructions still govern the work wherever they do not conflict with this worker identity, including `CONTRIB
+
+# Task
+## Captain's intent
+Exercise the relaunch session-authority path safely.
+
+## Firstmate spec
+Keep the isolated endpoint and worktree intact.
+
+# Current no-mistakes intent contract
+This section supersedes every earlier brief instruction about constructing `--intent`, but not later clarifications ac
+Use everything under `## Captain intent authorized for --intent` through the end of this brief, including any nested s
+Preserve those words without adding speaker labels or direct address.
+Firstmate-authored constraints, acceptance criteria, implementation details, decisions, and tradeoffs are specificatio
+The Definition of done's rule that `--intent` must be self-sufficient still governs the string you pass: resolve any r
+
+## Captain intent authorized for --intent
+Exercise the relaunch session-authority path safely.
+replacement registration: {"agent":"pi","agent_status":"working","session":"/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl"}
+same bound session preserved: YES
+FIXED: herdr reports 'working' on the resumed session, where the fresh session stayed frozen
+after /quit: {"agent":"pi","agent_status":"done","session":"/home/ivanl/.pi/agent/sessions/--tmp-nm-herdr-scratch-cwd--/2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.jsonl"} foreground=bash
+
+=== evidence complete ===

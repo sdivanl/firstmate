@@ -1,0 +1,18 @@
+The FRESH (non-resumed) Pi session started in pane fm-lab-nm1:w6:p1 while Herdr's
+bound authority was the idle session 2026-09-21T16-29-18-923Z_01a0c4cc-eacb-7402-a416-57d018b6c46f.
+Herdr reported agent_status=idle for the whole window (see live-relaunch-session-authority.log).
+This is the fresh session's own on-disk record, showing it was actively running bash tool
+calls during that window: the freeze is real, not a quiet agent.
+
+2026-09-21T16:29:27.934Z TOOL bash
+2026-09-21T16:29:50.552Z TOOL bash
+2026-09-21T16:29:52.856Z TOOL bash
+2026-09-21T16:29:55.627Z TOOL bash
+2026-09-21T16:29:58.806Z ASSISTANT: The working directory `/tmp/nm-herdr-scratch/cwd` is empty and there's no task file, pending changes
+2026-09-21T16:30:01.420Z TOOL bash
+2026-09-21T16:30:04.047Z TOOL bash
+2026-09-21T16:30:06.474Z TOOL bash
+2026-09-21T16:30:08.553Z TOOL bash
+2026-09-21T16:30:10.868Z TOOL read
+2026-09-21T16:30:14.375Z TOOL bash
+2026-09-21T16:30:17.522Z TOOL bash
