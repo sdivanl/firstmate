@@ -1,0 +1,5 @@
+poll_rc=0 elapsed_s=6
+=== record ===
+{"url":"https://github.com/cli/cli/pull/14475","checked_at":"2026-09-21T05:43:24Z","error":null,"head":"9b6f66363f51a8265f1bb07f8fc3746017859cf1","state":"open","events":0}
+=== wake-queue lines ===
+0

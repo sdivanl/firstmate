@@ -1,0 +1,7 @@
+ok - a later URL waits when fewer than fifteen seconds remain for its observation
+ok - eight 3-second PR reads complete fresh within one 20-second poll cycle
+ok - a 3-second-read issue observation completes fresh within one 20-second poll cycle
+ok - a genuinely unavailable forge records an error and wakes once per failure episode
+ok - budget exhausted mid-observation (exhaust) keeps the prior record and stays silent
+ok - budget exhausted mid-observation (hang) keeps the prior record and stays silent
+ok - a genuine forge failure inside the budget still records the error and wakes

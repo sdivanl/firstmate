@@ -1,0 +1,12 @@
+===== base live run 1 =====
+poll_rc=0 elapsed_s=11
+=== record ===
+{"url":"https://github.com/cli/cli/pull/14475","checked_at":"2026-09-21T05:43:47Z","error":null,"head":"9b6f66363f51a8265f1bb07f8fc3746017859cf1","state":"open","events":0}
+=== wake-queue lines ===
+0
+===== base live run 2 =====
+poll_rc=0 elapsed_s=13
+=== record ===
+{"url":"https://github.com/cli/cli/pull/14475","checked_at":"2026-09-21T05:43:58Z","error":null,"head":"9b6f66363f51a8265f1bb07f8fc3746017859cf1","state":"open","events":0}
+=== wake-queue lines ===
+0
