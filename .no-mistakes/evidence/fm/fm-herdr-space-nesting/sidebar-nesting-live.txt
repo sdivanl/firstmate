@@ -1,0 +1,34 @@
+lab session: fm-lab-fm-sidebar-nest-2523317-11343
+socket: /home/ivanl/.config/herdr/sessions/fm-lab-fm-sidebar-nest-2523317-11343/herdr.sock
+home workspace: w1 (label firstmate), launcher pane: w1:p2
+spawn rc=0
+task worktree: /home/ivanl/.treehouse/scratch-project-b9326e/1/scratch-project
+task workspace: w2
+task pane: w2:p2
+
+=== worktree list --workspace <home> (source + nested child) ===
+{"id":"cli:worktree:list","result":{"source":{"repo_key":"/tmp/fm-sidebar-nest.YxKuve/scratch-project/.git","repo_name":"scratch-project","repo_root":"/tmp/fm-sidebar-nest.YxKuve/scratch-project","source_checkout_path":"/tmp/fm-sidebar-nest.YxKuve/scratch-project","source_workspace_id":"w1"},"type":"worktree_list","worktrees":[{"branch":"master","is_bare":false,"is_detached":false,"is_linked_worktree":false,"is_prunable":false,"label":"scratch-project","open_workspace_id":"w1","path":"/tmp/fm-sidebar-nest.YxKuve/scratch-project"},{"is_bare":false,"is_detached":true,"is_linked_worktree":true,"is_prunable":false,"label":"scratch-project","open_workspace_id":"w2","path":"/home/ivanl/.treehouse/scratch-project-b9326e/1/scratch-project"}]}}
+
+=== workspace order (home vs task) ===
+w1	firstmate
+w2	└ t1 · p:QjcYahOydql6oBjFSCRH5Q
+task is 1 space(s) after its home workspace
+
+=== projected journal ===
+version=2
+task_id=t1
+projection_id=QjcYahOydql6oBjFSCRH5Q
+home=/tmp/fm-sidebar-nest.YxKuve/home
+session=fm-lab-fm-sidebar-nest-2523317-11343
+workspace_id=w2
+tab_id=w2:t2
+pane_id=w2:p2
+parent_workspace_id=w1
+parent_label=firstmate
+workspace_label=└ t1 · p:QjcYahOydql6oBjFSCRH5Q
+task_label=fm-t1
+
+=== teardown returns the nested checkout ===
+teardown rc=0
+task workspace removed after teardown
+lab torn down

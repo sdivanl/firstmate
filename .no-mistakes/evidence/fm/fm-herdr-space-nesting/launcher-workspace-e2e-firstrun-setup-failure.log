@@ -1,4 +1,4 @@
-START 2026-09-23T04:04:11+08:00
+START 2026-09-23T04:00:12+08:00
 ok - real herdr E2E: with one 'firstmate' workspace and no herdr parent, a crewmate still lands in this home's own workspace without stealing focus
 ok - real herdr E2E: the normal unique-label path is unchanged when the launcher's own pane identifies the workspace
 ok - real herdr E2E: a same-project task renders as a worktree child under the launcher's exact home without stealing focus
@@ -9,6 +9,6 @@ ok - real herdr E2E: an ambiguous home label with no launcher identity refuses b
 ok - real herdr E2E: a launcher pane that no longer exists refuses before any worker endpoint exists
 ok - real herdr E2E: a secondmate launching its own worker gets the same exact-workspace guarantee, and its same-labeled sibling is untouched
 ok - real herdr E2E: a --secondmate launch still stands up that secondmate's own workspace instead of inheriting the launcher's
-ok - real herdr E2E: teardown closes only the worker's own pane and leaves the launcher, its workspace, and the same-labeled sibling intact
-ok - real herdr E2E: isolated lab session removed and default fleet session unchanged
-EXIT=0 END 2026-09-23T04:04:59+08:00
+not ok - fm-teardown.sh failed for dupC
+REFUSED: cannot resolve the shared Treehouse project lock for /tmp/fm-herdr-launcher-e2e.6cJplV/scratch-project; nothing was changed
+EXIT=1 END 2026-09-23T04:00:56+08:00
