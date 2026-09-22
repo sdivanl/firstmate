@@ -1,0 +1,25 @@
+PRE: poll artifacts validate
+CONTROL_RC=0
+warning: /tmp/fm-live-relaunch.fMB1kl/home/data/livemal1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+relaunched livemal1 harness=claude from=claude model=default effort=default backend=tmux endpoint=fmses:fm-livemal1 worktree=/tmp/fm-live-relaunch.fMB1kl/wt
+--- published meta ---
+     1	window=fmses:fm-livemal1
+     2	endpoint_task_id=livemal1
+     3	worktree=/tmp/fm-live-relaunch.fMB1kl/wt
+     4	project=/tmp/fm-live-relaunch.fMB1kl/proj
+     5	harness=claude
+     6	kind=ship
+     7	mode=no-mistakes
+     8	yolo=off
+     9	tasktmp=/tmp/fm-livemal1
+    10	model=default
+    11	effort=default
+    12	busy_gen=g1790048661.1354798.20658
+    13	spawn_gen=s1790048661.1353244.1453
+    14	control_relaunch_tx=1352619.20260922T034420Z.12087
+    15	pr=https://github.com/example/repo/pull/78
+    16	pr_head=0123456789abcdef0123456789abcdef01234567
+    17	stray_unallowlisted_field=leftover
+POST: pre-existing malformed record still rejected by the identity parser
+POST: poll artifacts still refused; tx line=14 pr line=15 stray line=17
+LIVE-PASS

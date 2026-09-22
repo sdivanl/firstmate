@@ -1,0 +1,25 @@
+PRE: poll artifacts validate
+CONTROL_RC=0
+warning: /tmp/fm-live-relaunch.xZzlXW/home/data/livepr1/launch-brief.md records no delivery contract line (scaffolded before ship briefs recorded one); launching on the explicit --mode no-mistakes - confirm its definition of done matches
+relaunched livepr1 harness=claude from=claude model=default effort=default backend=tmux endpoint=fmses:fm-livepr1 worktree=/tmp/fm-live-relaunch.xZzlXW/wt
+--- published meta ---
+     1	window=fmses:fm-livepr1
+     2	endpoint_task_id=livepr1
+     3	worktree=/tmp/fm-live-relaunch.xZzlXW/wt
+     4	project=/tmp/fm-live-relaunch.xZzlXW/proj
+     5	harness=claude
+     6	kind=ship
+     7	mode=no-mistakes
+     8	yolo=off
+     9	tasktmp=/tmp/fm-livepr1
+    10	model=default
+    11	effort=default
+    12	busy_gen=g1790048628.1315699.30996
+    13	spawn_gen=s1790048628.1314479.18430
+    14	control_relaunch_tx=1314061.20260922T034347Z.549
+    15	pr=https://github.com/example/repo/pull/78
+    16	pr_head=0123456789abcdef0123456789abcdef01234567
+POST: identity parse ok url=https://github.com/example/repo/pull/78
+POST: poll artifacts validate
+POST: control_relaunch_tx line=14 precedes pr= line=15
+LIVE-PASS
