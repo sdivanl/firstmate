@@ -1,0 +1,32 @@
+# Manual product drive: REAL bin/fm-crew-state.sh, isolated case dirs
+# date: 2026-09-22T04:14:18Z
+# target commit: a424d8b0a5777238eae152ea207b8ad3c648d24b
+# The no-mistakes CLI output is supplied by the suite's fakebin (the unreadable
+# inventory cannot be induced against the operator's live state without
+# mutating it); the product script under test is the real one.
+
+### unreadable inventory + known newest terminal run
+    command: fm-crew-state.sh competing   (branch fm/competing, worktree /tmp/fm-crew-state.y1ed1V/manual-terminal-uncontradicted/wt)
+state: unknown · source: run-step · complete same-branch run inventory unreadable; run ids: 01NEW; last reported run id: 01NEW (already passed)
+
+### unreadable inventory + empty candidate list
+    command: fm-crew-state.sh competing   (branch fm/competing, worktree /tmp/fm-crew-state.y1ed1V/manual-terminal-no-candidates/wt)
+state: unknown · source: run-step · complete same-branch run inventory unreadable; run ids: ; last reported run id: 01NEW (already passed-with-override)
+
+### unreadable table + known newest run beside older failed sibling
+    command: fm-crew-state.sh competing   (branch fm/competing, worktree /tmp/fm-crew-state.y1ed1V/manual-terminal-with-sibling/wt)
+state: unknown · source: run-step · unreadable runs table; run ids: 01NEW, 01OLD; last reported run id: 01NEW (already passed)
+
+### unreadable table + superseded known run (newer 01NEW first)
+    command: fm-crew-state.sh competing   (branch fm/competing, worktree /tmp/fm-crew-state.y1ed1V/manual-terminal-superseded/wt)
+state: unknown · source: run-step · unreadable runs table; run ids: 01NEW, 01OLD; last reported run id: 01OLD
+
+### no last-reported run id for this branch (genuinely no readable history)
+    command: fm-crew-state.sh competing   (branch fm/competing, worktree /tmp/fm-crew-state.y1ed1V/manual-terminal-no-history/wt)
+state: unknown · source: run-step · complete same-branch run inventory unreadable; run ids: 01NEW
+
+### unreadable inventory + known run still active
+    command: fm-crew-state.sh competing   (branch fm/competing, worktree /tmp/fm-crew-state.y1ed1V/manual-active-record/wt)
+state: unknown · source: run-step · complete same-branch run inventory unreadable; run ids: 01NEW; last reported run id: 01NEW
+
+manual product drive complete

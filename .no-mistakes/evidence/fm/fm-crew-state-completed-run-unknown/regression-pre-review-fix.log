@@ -1,0 +1,13 @@
+# Review-round fix proof: focused scenarios against a424d8b^ (pre-review-fix)
+# The superseded guard fails there: it annotated a superseded run as its own
+# outcome while a newer run was first in the candidate list.
+
+ok - an uncontradicted terminal last-reported run names its own outcome without leaving the honest unknown
+ok - a terminal last-reported run with no visible candidates still names its own outcome
+ok - a terminal last-reported run named beside an older failed sibling still names its own outcome
+not ok - a known run that is not the newest candidate must not be described as its own outcome (unexpected: 'already passed')
+--- output ---
+state: unknown · source: run-step · unreadable runs table; run ids: 01NEW, 01OLD; last reported run id: 01OLD (already passed)
+SCENARIO FAILED: test_unreadable_inventory_superseded_known_run_stays_silent
+ok - a terminal last-reported run absent from a non-empty visible candidate list adds no unverified outcome detail
+exit=1

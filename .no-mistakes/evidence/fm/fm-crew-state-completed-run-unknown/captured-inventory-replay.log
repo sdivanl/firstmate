@@ -1,0 +1,11 @@
+# Captured real-world inventory replay (superseded cancelled run + live successor)
+# TARGET:
+ok - captured capped inventory replays selection, ambiguity, and unavailable lookup
+captured-inventory replay complete
+target_exit=0
+
+# PRE-REVIEW-FIX a424d8b^ (annotates the superseded cancellation):
+not ok - the superseded known run is not the newest candidate and must not read as its own outcome (unexpected: 'already cancelled')
+--- output ---
+state: unknown · source: run-step · competing live runs; run ids: 01M2GAWMSDQK4B5EA9GZW35RXE, 01M2FNFPK984YP0EHFTD1XEF8P, 01M289YXN7V0513AKCF53MJ1BC, 01M289X89E6CCFQ696MFF8G0MR, 01M21B2PY8J90QVVWWNDZ2WVGJ, 01M21AXB75DVRYHRRWBC29GSN9, 01M20RM7ENZX5ZKSTYK5K3EFEG, 01M20MQ02N69VJKXW9N8321SQW, 01M20HPP5XR7K31VHP0DC6S5QA; last reported run id: 01M2FNFPK984YP0EHFTD1XEF8P (already cancelled)
+prefix_exit=1

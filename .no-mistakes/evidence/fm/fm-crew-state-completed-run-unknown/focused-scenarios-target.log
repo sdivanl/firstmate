@@ -1,0 +1,10 @@
+# Focused unreadable-inventory scenarios against the REAL target script
+# command: bash tests/.tmp-crew-drive.sh
+
+ok - an uncontradicted terminal last-reported run names its own outcome without leaving the honest unknown
+ok - a terminal last-reported run with no visible candidates still names its own outcome
+ok - a terminal last-reported run named beside an older failed sibling still names its own outcome
+ok - a terminal last-reported run that is not the newest candidate adds no unverified outcome detail
+ok - a terminal last-reported run absent from a non-empty visible candidate list adds no unverified outcome detail
+focused unreadable-inventory scenarios complete
+exit=0

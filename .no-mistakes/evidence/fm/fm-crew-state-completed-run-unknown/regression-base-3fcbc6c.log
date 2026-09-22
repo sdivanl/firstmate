@@ -1,0 +1,19 @@
+# Regression proof: same focused scenarios, PRE-FIX base commit 3fcbc6c
+# The 3 fix scenarios fail on base; the 2 guards pass on base too (they
+# guard the review-round superseded bug, shown in the next log).
+
+not ok - an uncontradicted terminal record names its own recorded outcome (missing: '(already passed)')
+--- output ---
+state: unknown · source: run-step · complete same-branch run inventory unreadable; run ids: 01NEW; last reported run id: 01NEW
+SCENARIO FAILED: test_unreadable_inventory_names_an_uncontradicted_terminal_run
+not ok - an empty candidate list is not a contradiction and still names the real recorded outcome word (missing: '(already passed-with-override)')
+--- output ---
+state: unknown · source: run-step · complete same-branch run inventory unreadable; run ids: ; last reported run id: 01NEW
+SCENARIO FAILED: test_unreadable_inventory_with_no_visible_candidates_still_names_the_run
+not ok - a known run named alongside an older failed sibling still names its own outcome (missing: '(already passed)')
+--- output ---
+state: unknown · source: run-step · unreadable runs table; run ids: 01NEW, 01OLD; last reported run id: 01NEW
+SCENARIO FAILED: test_unreadable_inventory_names_a_terminal_run_beside_an_older_sibling
+ok - a terminal last-reported run that is not the newest candidate adds no unverified outcome detail
+ok - a terminal last-reported run absent from a non-empty visible candidate list adds no unverified outcome detail
+exit=1
