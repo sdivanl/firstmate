@@ -1,0 +1,6 @@
+ok - a leaked descendant process rooted under the task's worktree is reaped by teardown, not left surviving
+
+real	0m5.036s
+user	0m1.691s
+sys	0m2.054s
+EXIT=0

@@ -1,0 +1,6 @@
+not ok - leaked-process-reap: leaked worktree process survived teardown
+
+real	0m2.585s
+user	0m1.202s
+sys	0m1.179s
+EXIT=1

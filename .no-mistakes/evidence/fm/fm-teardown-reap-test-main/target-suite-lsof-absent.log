@@ -1,0 +1,6 @@
+not ok - precondition: lsof is not installed; the leaked-process reap cases need a real lsof on PATH (install the lsof package, then re-run)
+
+real	0m0.244s
+user	0m0.119s
+sys	0m0.126s
+EXIT=1
