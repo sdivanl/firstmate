@@ -1,0 +1,3 @@
+home_workspace=w1
+nested_workspace=w2
+foreign_workspace=w3

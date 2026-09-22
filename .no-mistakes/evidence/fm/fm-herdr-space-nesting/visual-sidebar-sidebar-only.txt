@@ -1,0 +1,40 @@
+ spaces                  │
+                         │
+ · unknown · firstmate  ▾│
+   master                │
+   └─ · unkno… · └ nes…  │
+ · unknown · └ foreign…  │
+   master                │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+ new                 menu│
+─────────────────────────│
+ agents           grouped│
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                         │
+                        «│

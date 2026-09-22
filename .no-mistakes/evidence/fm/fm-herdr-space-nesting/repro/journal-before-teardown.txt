@@ -1,0 +1,12 @@
+version=2
+task_id=shape
+projection_id=dmagiBOVknWIRG1NytKvoQ
+home=/tmp/fm-nested-repro.t2t4UW/home
+session=fm-lab-fm-nested-repro-2738799-10509
+workspace_id=w2
+tab_id=w2:t2
+pane_id=w2:p2
+parent_workspace_id=w1
+parent_label=firstmate
+workspace_label=└ shape · p:dmagiBOVknWIRG1NytKvoQ
+task_label=fm-shape

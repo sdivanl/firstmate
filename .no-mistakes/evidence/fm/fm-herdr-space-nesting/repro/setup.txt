@@ -1,0 +1,4 @@
+session=fm-lab-fm-nested-repro-2738799-10509 ws=w1 launch=w1:p2
+spawn rc=0
+wt=/home/ivanl/.treehouse/project-8be01e/1/project wsid=w2 pane=w2:p2
+teardown rc=0

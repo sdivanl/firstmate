@@ -1,0 +1,13 @@
+ok - real Herdr lab: an opted-out spawn retains the Stage 1 Herdr command sequence with zero ordering calls
+ok - real Herdr lab: a home that configured nothing is projected by default on herdr 0.9.1
+ok - real Herdr lab: a fresh same-project space renders one level below its exact home, with create, prune, and move preserving focus
+ok - real Herdr lab: persisted-focused seeded prune proceeds when no live client is attached
+ok - real Herdr lab: bounded lock contention warns and falls back flat without projection or focus drift
+ok - real Herdr lab: concurrent primary workers form one stable contiguous block without active workspace/tab drift
+ok - real Herdr lab: forced workspace.move failure leaves a successful worker in default order with a warning and no cleanup
+ok - real Herdr lab: concurrent post-create abort cleanup stays serialized with exact focus restoration
+ok - real Herdr lab: an aborted carried recovery keeps the task record and durable lease for a rerun
+ok - real Herdr lab: an aborted carried recovery keeps its record through a backlog dispatch failure
+ok - real Herdr lab: a nested task whose task space was closed carries its own durable checkout through recovery
+ok - real Herdr lab: durable nested checkout allocation preserves the task metadata contract
+not ok - confirmed projected teardown did not retire its presentation journal

@@ -1,0 +1,47 @@
+=== workspace list ===
+{"id":"cli:workspace:list","result":{"type":"workspace_list","workspaces":[{"active_tab_id":"w1:t2","agent_status":"unknown","focused":true,"label":"firstmate","number":1,"pane_count":1,"tab_count":1,"workspace_id":"w1","worktree":{"checkout_path":"/tmp/fm-visual.ZlXIkn/project","is_linked_worktree":false,"repo_key":"/tmp/fm-visual.ZlXIkn/project/.git","repo_name":"project","repo_root":"/tmp/fm-visual.ZlXIkn/project"}},{"active_tab_id":"w2:t2","agent_status":"unknown","focused":false,"label":"└ nested-task · p:RQ1QiLn8vULA7-oCDkj04g","number":2,"pane_count":1,"tab_count":1,"workspace_id":"w2","worktree":{"checkout_path":"/home/ivanl/.treehouse/project-43df44/2/project","is_linked_worktree":true,"repo_key":"/tmp/fm-visual.ZlXIkn/project/.git","repo_name":"project","repo_root":"/tmp/fm-visual.ZlXIkn/project"}},{"active_tab_id":"w3:t2","agent_status":"unknown","focused":false,"label":"└ foreign-task · p:kXORyYii40yhkI6uFLVlBA","number":3,"pane_count":1,"tab_count":1,"workspace_id":"w3"}]}}
+
+=== worktree list home ===
+{"id":"cli:worktree:list","result":{"source":{"repo_key":"/tmp/fm-visual.ZlXIkn/project/.git","repo_name":"project","repo_root":"/tmp/fm-visual.ZlXIkn/project","source_checkout_path":"/tmp/fm-visual.ZlXIkn/project","source_workspace_id":"w1"},"type":"worktree_list","worktrees":[{"branch":"master","is_bare":false,"is_detached":false,"is_linked_worktree":false,"is_prunable":false,"label":"project","open_workspace_id":"w1","path":"/tmp/fm-visual.ZlXIkn/project"},{"is_bare":false,"is_detached":true,"is_linked_worktree":true,"is_prunable":false,"label":"project","path":"/home/ivanl/.treehouse/project-43df44/1/project"},{"is_bare":false,"is_detached":true,"is_linked_worktree":true,"is_prunable":false,"label":"project","open_workspace_id":"w2","path":"/home/ivanl/.treehouse/project-43df44/2/project"}]}}
+
+=== plain sidebar capture ===
+ spaces                  │  fm-anchor    +                                                                       omarchy
+                         │┌────────────────────────────────────────────────────────────────────────────────────────────┐
+ · unknown · firstmate  ▾││treehouse get                                                                               │
+   master                ││                                                                                            │
+   └─ · unkno… · └ nes…  ││project master ❯ treehouse get                                                              │
+ · unknown · └ foreign…  ││🌳 Setting up worktree...                                                                   │
+   master                ││🌳 Entered worktree at ~/.treehouse/project-43df44/1/project. Type 'exit' to return.        │
+                         ││                                                                                            │
+                         ││project HEAD ❯ export GOTMPDIR=/tmp/fm-anchor/gotmp                                         │
+                         ││export COMPACT_ADVISER_DISABLE=1                                                            │
+                         ││export FM_TASK_ID=anchor                                                                    │
+                         ││                                                                                            │
+                         ││project HEAD ❯ export COMPACT_ADVISER_DISABLE=1                                             │
+                         ││                                                                                            │
+                         ││project HEAD ❯ export FM_TASK_ID=anchor                                                     │
+                         ││                                                                                            │
+                         ││project HEAD ❯ . '/tmp/fm-anchor+b24f0ddecadd1ae4b98897d4f83ed5902f5c0ef700a0a57246d7e4dccf5│
+                         ││6d663/launch.s1790093926.528361.20930.sh'                                                   │
+                         ││                                                                                            │
+ new                 menu││                                                                                            │
+─────────────────────────││                                                                                            │
+ agents           grouped││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                        «│└────────────────────────────────────────────────────────────────────────────────────────────┘

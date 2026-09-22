@@ -1,0 +1,40 @@
+ spaces                  │  fm-anchor    +                                                                       omarchy
+                         │┌────────────────────────────────────────────────────────────────────────────────────────────┐
+ · unknown · firstmate  ▾││treehouse get                                                                               │
+   master                ││                                                                                            │
+   └─ · unkno… · └ nes…  ││project master ❯ treehouse get                                                              │
+ · unknown · └ foreign…  ││🌳 Setting up worktree...                                                                   │
+   master                ││🌳 Entered worktree at ~/.treehouse/project-43df44/1/project. Type 'exit' to return.        │
+                         ││                                                                                            │
+                         ││project HEAD ❯ export GOTMPDIR=/tmp/fm-anchor/gotmp                                         │
+                         ││export COMPACT_ADVISER_DISABLE=1                                                            │
+                         ││export FM_TASK_ID=anchor                                                                    │
+                         ││                                                                                            │
+                         ││project HEAD ❯ export COMPACT_ADVISER_DISABLE=1                                             │
+                         ││                                                                                            │
+                         ││project HEAD ❯ export FM_TASK_ID=anchor                                                     │
+                         ││                                                                                            │
+                         ││project HEAD ❯ . '/tmp/fm-anchor+b24f0ddecadd1ae4b98897d4f83ed5902f5c0ef700a0a57246d7e4dccf5│
+                         ││6d663/launch.s1790093926.528361.20930.sh'                                                   │
+                         ││                                                                                            │
+ new                 menu││                                                                                            │
+─────────────────────────││                                                                                            │
+ agents           grouped││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                         ││                                                                                            │
+                        «│└────────────────────────────────────────────────────────────────────────────────────────────┘

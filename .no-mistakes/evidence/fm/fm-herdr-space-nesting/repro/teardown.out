@@ -1,0 +1,4 @@
+🌳 Worktree returned to pool.
+/tmp/fm-nested-repro.t2t4UW/project: already current
+teardown shape complete (window fm-lab-fm-nested-repro-2738799-10509:w2:p2, worktree /home/ivanl/.treehouse/project-8be01e/1/project)
+Backlog: shape just finished (this home keeps no markdown backlog at /tmp/fm-nested-repro.t2t4UW/home/data/backlog.md). Update /tmp/fm-nested-repro.t2t4UW/home/data/backlog.md - move shape to Done, keep Done to the 10 most recent, then re-scan Queued and dispatch only work whose blockers are gone and date is due.
