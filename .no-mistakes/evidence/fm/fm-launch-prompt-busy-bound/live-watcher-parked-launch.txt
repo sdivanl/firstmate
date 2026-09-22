@@ -1,0 +1,33 @@
+== real captured parked tail (production tmux capture-pane -p -S -40) ==
+
+────────────────────────────────────────────────────────────────────────────────
+ Accessing workspace:
+
+ /tmp/fm-lp-watch.XStgrA/wt
+
+ Quick safety check: Is this a project you created or one you trust? (Like your
+ own code, a well-known open source project, or work from your team). If not,
+ take a moment to review what's in this folder first.
+
+ Claude Code'll be able to read, edit, and execute files here.
+
+ Security guide
+
+ ❯ No, exit
+   Yes, I trust this folder
+
+ Enter to confirm · Esc to cancel
+== classifier on the real captured pane ==
+fixed-verdict: unknown launch-prompt
+== fixed run (backstop live) ==
+watcher-exit: 0 after 4s
+watcher-stdout:
+stale: fm-lp-watch-42126:w
+== control run (Claude signature disabled) ==
+watcher-exit: 124 after 25s
+watcher-stdout:
+Terminated                 sleep "$POLL"
+== result ==
+PASS classifier: real parked pane -> unknown launch-prompt
+PASS fixed: parked launch surfaced promptly (exit 0 after 4s with stale:)
+PASS control: without the backstop the parked launch stays absorbed as busy (no wake in 25s)
