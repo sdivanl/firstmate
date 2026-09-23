@@ -24,12 +24,11 @@ make_home() {  # <name>
   # tests/lib.sh, not with a shell array: make_home runs inside a command
   # substitution, where an array append never reaches the caller.
   fm_test_track_procevent_home "$home" "$home/procevent-claims"
-  mkdir -p "$home/state" "$home/data"
+  mkdir -p "$home/state" "$home/data" "$home/lavish-state"
   fakebin=$(fm_fakebin "$home")
   # The build proves the board session is live before it arms anything, so the
-  # stub reports the opened shape the real lavish-axi emits. This suite is about
-  # what the template renders, not about session liveness, which
-  # tests/fm-bearings-board.test.sh owns.
+  # stub reports the opened shape the real lavish-axi emits. Its saved session
+  # lets the real polling adapter stay attached while the renderer is tested.
   cat > "$fakebin/lavish-axi" <<'SH'
 #!/usr/bin/env bash
 case "${1-}" in
@@ -37,7 +36,7 @@ case "${1-}" in
   '')
     printf 'sessions[1]{file,status,url,pending_prompts}:\n'
     [ ! -s "$FM_HOME/lavish-open" ] \
-      || printf '  %s,open,"http://127.0.0.1/session/render",0\n' "$(cat "$FM_HOME/lavish-open")"
+      || printf '  %s,open,"http://127.0.0.1:4387/session/0123456789abcdef",0\n' "$(cat "$FM_HOME/lavish-open")"
     ;;
   poll)
     # Bounded, so a listener that escapes its test stops on its own.
@@ -47,6 +46,9 @@ case "${1-}" in
   *)
     real=$(cd "$(dirname "$1")" && pwd -P)/$(basename "$1")
     printf '%s\n' "$real" > "$FM_HOME/lavish-open"
+    jq -n --arg file "$real" \
+      '{sessions:{"0123456789abcdef":{file:$file,url:"http://127.0.0.1:4387/session/0123456789abcdef"}}}' \
+      > "$LAVISH_AXI_STATE_DIR/state.json"
     printf 'session:\n  status: opened\n'
     ;;
 esac
@@ -59,7 +61,7 @@ SH
 # Build the board from <underway-json> plus <charted-json> and return what the
 # renderer produced.
 render_board() {  # <home> <underway-json> <charted-json> [charted_more] [charted_warning_more]
-  local home=$1 underway=$2 charted=$3 more=${4:-0} warning_more=${5:-0} data="$1/payload.json"
+  local home=$1 underway=$2 charted=$3 more=${4:-0} warning_more=${5:-0} data="$1/payload.json" sid
   jq -n --argjson underway "$underway" --argjson charted "$charted" \
     --argjson more "$more" --argjson warning_more "$warning_more" '{
     schema:"fm-bearings-board.v1", home:"render-home", generated:"2026-08-26T00:00Z",
@@ -68,7 +70,19 @@ render_board() {  # <home> <underway-json> <charted-json> [charted_more] [charte
   PATH="$home/fakebin:$PATH" FM_HOME="$home" \
     FM_STATE_OVERRIDE="$home/state" FM_DATA_OVERRIDE="$home/data" \
     FM_PROCEVENT_CLAIM_ROOT="$home/procevent-claims" \
+    LAVISH_AXI_STATE_DIR="$home/lavish-state" \
     "$BOARD" build "$data" >/dev/null || fail "the board did not build"
+  # A short-lived startup claim is not proof that the board has a listener.
+  sid=$("$ROOT/bin/fm-procevent-lavish.sh" source-id "$home/.lavish/bearings-board.html") \
+    || fail "could not identify the board listener"
+  sleep 1
+  PATH="$home/fakebin:$PATH" FM_HOME="$home" \
+    FM_STATE_OVERRIDE="$home/state" FM_DATA_OVERRIDE="$home/data" \
+    FM_PROCEVENT_CLAIM_ROOT="$home/procevent-claims" \
+    LAVISH_AXI_STATE_DIR="$home/lavish-state" \
+    "$ROOT/bin/fm-procevent.sh" list \
+    | awk -v id="$sid" 'NR > 1 && $1 == id && $2 == "lavish" && $3 == "live" { found = 1 } END { exit !found }' \
+    || fail "the board listener did not stay live"
   node "$HARNESS" "$home/.lavish/bearings-board.html" \
     || fail "the built board could not be rendered"
 }
