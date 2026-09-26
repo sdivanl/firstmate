@@ -1,0 +1,18 @@
+Scenario: six-tool healthy home remains silent
+Command: FM_TOOL_UPDATE_INTERVAL=0 bin/fm-tool-update-check.sh (isolated FM_HOME, six local prompt-answering tool fixtures)
+Exit status: 0
+Probe invocations: 12 (expected 12: version + announcement for each tool)
+Stdout bytes: 0 (expected 0)
+Observed calls:
+tool1 update --check
+tool1 --version
+tool2 update --check
+tool2 --version
+tool3 update --check
+tool3 --version
+tool4 update --check
+tool4 --version
+tool5 update --check
+tool5 --version
+tool6 update --check
+tool6 --version
