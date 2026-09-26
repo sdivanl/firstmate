@@ -1,0 +1,8 @@
+actual executable: bin/fm-tool-update-check.sh
+exit: 0
+output bytes: 0
+announcement calls: 2
+attempt log:
+announcement call
+announcement call
+recorded findings: reported=

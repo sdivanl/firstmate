@@ -1,0 +1,8 @@
+actual executable: bin/fm-tool-update-check.sh
+exit: 0
+output bytes: 0
+delayed git probe attempts: 2
+probe log:
+git cat-file probe
+git cat-file probe
+recorded findings: reported=

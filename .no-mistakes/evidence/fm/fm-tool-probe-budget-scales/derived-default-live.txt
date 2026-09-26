@@ -1,0 +1,5 @@
+Live product check: bin/fm-tool-update-check.sh
+Fixture: isolated FM_HOME inside the run worktree; six watched entries using real installed gh-axi and lavish-axi commands.
+Environment: FM_CHECK_TIMEOUT=30, FM_TOOL_UPDATE_INTERVAL=0; FM_TOOL_UPDATE_BUDGET_SECS unset.
+Result: exit status 0; stdout/stderr empty.
+This demonstrates the derived-budget healthy-home silence against real tool binaries. Transient-delay retry scenarios were exercised by the focused regression tests using controlled delayed tool fixtures, not live real-tool delays.

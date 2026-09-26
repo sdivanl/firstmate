@@ -1,0 +1,4 @@
+actual executable: bin/fm-tool-update-check.sh
+exit: 0; elapsed_seconds: 22
+report:
+tool updates: t1 update available: available: true; t2 update available: available: true; t3 update available: available: true; t4 update available: available: true; t5 update available: available: true

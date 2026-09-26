@@ -1,0 +1,20 @@
+command: FM_CHECK_TIMEOUT=30 FM_HOME=<isolated> FM_TOOL_UPDATE_INTERVAL=0 bin/fm-tool-update-check.sh
+exit: 0
+stdout/stderr bytes: 0
+calls: 12
+call details:
+tool1 update --check
+tool1 --version
+tool2 update --check
+tool2 --version
+tool3 update --check
+tool3 --version
+tool4 update --check
+tool4 --version
+tool5 update --check
+tool5 --version
+tool6 update --check
+tool6 --version
+record: fm-tool-updates-v1
+epoch=1790397722
+reported=
