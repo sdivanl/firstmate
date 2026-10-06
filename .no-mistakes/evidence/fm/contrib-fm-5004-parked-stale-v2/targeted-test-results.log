@@ -1,0 +1,40 @@
+Targeted behavior suites for the deliberate-stop parking change (firstmate #5004)
+Base: 5838f105008cb24bc999a819d3c5b50c2fd5675d
+Target: 7001c59b50447bace9de2043d21d520252f892dd
+Branch: fm/contrib-fm-5004-parked-stale-v2
+
+== tests/fm-control.test.sh ==
+ok - fm-control exit: a verified stop records the deliberate-stop marker; a refused stop does not
+suite last line: EXIT=0
+counts: ok=45 not-ok=0
+
+== tests/fm-control-relaunch.test.sh ==
+ok - fm-control relaunch: clears the durable deliberate-stop marker left by a prior stop
+ok - fm-control relaunch: a failed post-launch backlog commit still clears the deliberate-stop marker
+ok - fm-spawn fresh spawn: reviving an existing task record clears the deliberate-stop marker
+ok - fm-spawn fresh spawn: a retry after a rolled-back revive clears the orphaned deliberate-stop marker
+suite last line: EXIT=0
+counts: ok=79 not-ok=0
+
+== tests/fm-daemon.test.sh ==
+ok - the away-mode daemon parks a deliberately stopped task instead of wedge-escalating it
+ok - the away-mode daemon re-surfaces a deliberately stopped task on the bounded pause cadence
+ok - the away-mode daemon anchors a deliberate stop's first recheck on the stop itself
+suite last line: EXIT=0
+counts: ok=147 not-ok=0
+
+== tests/fm-teardown.test.sh ==
+ok - teardown retires the deliberate-stop marker when an exact busy-state sidecar is already absent
+suite last line: EXIT=0
+counts: ok=113 not-ok=0
+
+== tests/fm-watch-triage.test.sh ==
+ok - a deliberately stopped finished task is parked on the bounded recheck cadence, never wedge-escalated
+ok - a re-stopped deliberate task absorbs on first sight, then still re-surfaces on the bounded cadence
+ok - clearing the deliberate-stop marker returns the finished task to ordinary terminal-stale supervision
+ok - clearing a deliberate-stop marker resurfaces an unchanged terminal pane
+ok - a deliberately stopped busy pane is parked on the bounded recheck cadence, never wedge-escalated
+ok - a churning deliberately parked task still gets the bounded recheck, never a wedge
+suite last line: EXIT=0
+counts: ok=147 not-ok=0
+

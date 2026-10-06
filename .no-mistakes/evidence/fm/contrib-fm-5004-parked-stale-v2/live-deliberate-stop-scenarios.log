@@ -1,0 +1,68 @@
+lab=/tmp/fm-lab.RMzzBx
+tmux socket=/tmp/fm-lab.RMzzBx/tmux/fm.sock
+
+===== SCENARIO 1: a deliberate stop writes the durable marker =====
+the agent was deliberately stopped; its task record stays open
+--- fm-control.sh parked exit ---
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /tmp/fm-lab.RMzzBx
+already-stopped parked harness=claude backend=tmux endpoint=fmlab:fm-parked worktree=/tmp/fm-lab.RMzzBx/wt-parked
+rc=0
+--- marker ---
+-rw-r--r-- 1 ivanl ivanl 11 Oct  6 15:25 /tmp/fm-lab.RMzzBx/state/parked.deliberate-stop
+marker content (stop epoch): 1791271529
+
+===== SCENARIO 2: a refused stop records no marker =====
+--- fm-control.sh refused exit (recorded window does not exist) ---
+fm-gate-refuse: gate agent lifecycle permitted only against lab home /tmp/fm-lab.RMzzBx
+error: task refused's endpoint fmlab:fm-refused reads 'missing', but tmux absence cannot be proven from a task record: the record does not carry the endpoint's socket identity, and a server-wide window inventory only describes the tmux server this process addresses, so a window absent from it may still be alive on another; exit will not claim an agent stopped at an address it cannot trust, nor send lifecycle input to one
+rc=1
+confirmed: no deliberate-stop marker for a refused stop
+
+===== SCENARIO 3: the watcher parks the stopped finished task (absorb, no wedge) =====
+--- watcher poll for 7s (FM_PAUSE_RESURFACE_SECS=999) ---
+watcher rc=124 (124 = kept blocking = absorbed, no wake)
+--- triage log (deliberate stop absorbed) ---
+[2026-10-06T15:25:31+0800] absorbed stale (deliberate stop, age 2s): fmlab:fm-parked
+[2026-10-06T15:25:34+0800] absorbed stale (deliberate stop, age 5s): fmlab:fm-parked
+[2026-10-06T15:25:35+0800] absorbed stale (deliberate stop, age 6s): fmlab:fm-parked
+--- wedge markers for this window (must be absent) ---
+ls: cannot access '/tmp/fm-lab.RMzzBx/state/.stale-since-fmlab_fm-parked': No such file or directory
+ls: cannot access '/tmp/fm-lab.RMzzBx/state/.wedge-escalations-fmlab_fm-parked': No such file or directory
+
+===== SCENARIO 4: past the cadence it re-surfaces as a recheck, never a wedge =====
+--- watcher with FM_PAUSE_RESURFACE_SECS=240, marker aged 500s ---
+stale: fmlab:fm-parked (deliberately stopped 501s ago, rechecked on a long cadence not a wedge; relaunch the worker or clean up the finished task)
+watcher rc=0
+--- queued wake reason ---
+1791271538	1	stale	fmlab:fm-parked	stale: fmlab:fm-parked (deliberately stopped 501s ago, rechecked on a long cadence not a wedge; relaunch the worker or clean up the finished task)
+
+===== SCENARIO 5: clearing the marker returns the finished task to terminal stale =====
+--- watcher with no marker ---
+stale: fmlab:fm-parked
+watcher rc=0
+
+===== SCENARIO 6: a busy verdict is also parked on the long cadence =====
+--- watcher with FM_BUSY_TURN_MAX_SECS=1 (meta aged to year 2000), marker fresh ---
+Terminated                 sleep "$POLL"
+watcher rc=124 (124 = absorbed, no wake)
+--- wedge timer for the busy window (must be absent) ---
+ls: cannot access '/tmp/fm-lab.RMzzBx/state/.stale-since-fmlab_fm-busy': No such file or directory
+--- busy-turn recheck past the cadence ---
+stale: fmlab:fm-busy (deliberately stopped 501s ago, rechecked on a long cadence not a wedge; relaunch the worker or clean up the finished task)
+watcher rc=0
+--- queued wake reason ---
+1791271550	1	stale	fmlab:fm-busy	stale: fmlab:fm-busy (deliberately stopped 501s ago, rechecked on a long cadence not a wedge; relaunch the worker or clean up the finished task)
+
+===== SCENARIO 7: teardown clears the deliberate-stop marker =====
+marker before teardown: /tmp/fm-lab.RMzzBx/state/teardown.deliberate-stop
+--- fm-teardown.sh teardown --force ---
+🌳 Worktree returned to pool.
+WARNING: watcher still down (same stale episode; last beat: 6s ago, grace 300s) - full banner already printed this episode.
+WARNING: queued wakes pending - drain them with bin/fm-wake-drain.sh before anything else.
+/tmp/fm-lab.RMzzBx/proj3: already current
+teardown teardown complete (window fmlab:fm-teardown, worktree /tmp/fm-lab.RMzzBx/th/.treehouse/proj3-fb4d3e/1/proj3)
+Backlog: teardown just finished (this home keeps no markdown backlog at /tmp/fm-lab.RMzzBx/data/backlog.md). Update /tmp/fm-lab.RMzzBx/data/backlog.md - move teardown to Done, keep Done to the 10 most recent, then re-scan Queued and dispatch only work whose blockers are gone and date is due.
+--- marker after teardown ---
+confirmed: teardown cleared the deliberate-stop marker
+
+driver complete
